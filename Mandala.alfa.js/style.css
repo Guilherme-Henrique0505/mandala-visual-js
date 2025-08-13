@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@700&family=Montserrat:wght@400;700&display=swap');
+
+/* Estilos Globais e Contêiner */
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+
+.circular-menu-container {
+    position: relative;
+    width: 530px; /* Projeto todo: 530px */
+    height: 530px; /* Projeto todo: 530px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para o SVG raiz da Mandala Principal */
+.mandala-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.276); /* Escala o SVG inteiro para caber no contêiner de 530px */
+    opacity: 0; /* Inicia invisível para o fade-in */
+    transform-origin: center center;
+    transition: opacity 1.5s ease-in-out; /* Transição de fade-in no carregamento */
+    pointer-events: none; /* Desabilita interação enquanto invisível */
+}
+
+/* Classe para ativar o fade-in e a interação após o carregamento */
+.mandala-svg.visible {
+    opacity: 1; /* Torna-se visível */
+    pointer-events: auto; /* Permite interação */
+}
+
+/* ------------------------------------ */
+/* ESTILOS DA MANDALA PRINCIPAL */
+/* ------------------------------------ */
+
+/* Linhas Divisórias da Mandala Principal */
+.mandala-svg line {
+    stroke: #343333;
+    stroke-width: 1px;
+}
+
+/* Arcos Principais da Mandala */
+.mandala-group .menu-arco {
+    fill: #333334; /* Cor padrão dos arcos */
+    transition: fill 0.5s ease, transform 0.5s ease; /* Transição de 0.5s */
+    cursor: pointer;
+}
+
+/* Textos da Mandala Principal */
+.mandala-svg text {
+    fill: black; /* Cor padrão que pode ser sobrescrita */
+    text-anchor: middle;
+    dominant-baseline: central;
+    pointer-events: none; /* Para que o clique e hover passem pelo texto e atinjam o grupo */
+    transition: fill 0.5s ease, transform 0.5s ease; /* Transição de 0.5s */
+}
+
+.mandala-svg .titulo-indicadores {
+    font-family: 'Akshar', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    fill: black;
+}
+
+.mandala-svg .titulo-indicadores-valor {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    fill: black;
+}
+
+.mandala-svg .titulo-padrao {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    fill: white;
+}
+
+/* Ícones da Mandala Principal */
+.mandala-svg .icon-base {
+    fill: white; /* Cor padrão para os ícones */
+    transition: fill 0.5s ease, transform 0.5s ease; /* Transição de 0.5s */
+    pointer-events: none; /* Crucial: para que o clique e hover passem pelo ícone e atinjam o grupo */
+}
+
+/* ------------------------------------ */
+/* EFEITOS DE HOVER E ESTADO ATIVO (MANDALA PRINCIPAL) */
+/* ------------------------------------ */
+
+.mandala-group:hover,
+.mandala-group.active-group {
+    cursor: pointer;
+}
+
+/* Cor do arco no hover/ativo da Mandala Principal */
+.mandala-group:hover .menu-arco,
+.mandala-group.active-group .menu-arco {
+    fill: #515251; /* Cor de destaque para o arco */
+}
+
+/* Cor do texto .titulo-indicadores e .titulo-indicadores-valor no hover/ativo */
+.mandala-group:hover .titulo-indicadores,
+.mandala-group.active-group .titulo-indicadores,
+.mandala-group:hover .titulo-indicadores-valor,
+.mandala-group.active-group .titulo-indicadores-valor {
+    fill: rgb(139, 139, 139); /* Cor rgb(139, 139, 139) */
+}
+
+/* Cor dos demais textos (titulo-padrao) no hover/ativo */
+.mandala-group:hover .titulo-padrao,
+.mandala-group.active-group .titulo-padrao {
+    fill: white; /* Mantém branco */
+}
+
+/* Cor do ícone no hover/ativo da Mandala Principal */
+.mandala-group:hover .icon-base,
+.mandala-group.active-group .icon-base {
+    fill: white;
+}
+
+/* Movimento Simultâneo no Hover e Ativo da Mandala Principal */
+#grupo-arco-Financeiro:hover .menu-arco, #grupo-arco-Financeiro:hover text, #grupo-arco-Financeiro:hover .icon-base,
+#grupo-arco-Financeiro.active-group .menu-arco, #grupo-arco-Financeiro.active-group text, #grupo-arco-Financeiro.active-group .icon-base {
+    transform: translate(-6px, -6px) scale(1.01);
+    transform-origin: center center;
+}
+
+#grupo-arco-Experiencia-Cliente:hover .menu-arco, #grupo-arco-Experiencia-Cliente:hover text, #grupo-arco-Experiencia-Cliente:hover .icon-base,
+#grupo-arco-Experiencia-Cliente.active-group .menu-arco, #grupo-arco-Experiencia-Cliente.active-group text, #grupo-arco-Experiencia-Cliente.active-group .icon-base {
+    transform: translate(6px, -6px) scale(1.01);
+    transform-origin: center center;
+}
+
+#grupo-arco-Tecnologia:hover .menu-arco, #grupo-arco-Tecnologia:hover text, #grupo-arco-Tecnologia:hover .icon-base,
+#grupo-arco-Tecnologia.active-group .menu-arco, #grupo-arco-Tecnologia.active-group text, #grupo-arco-Tecnologia.active-group .icon-base {
+    transform: translate(-6px, 6px) scale(1.01);
+    transform-origin: center center;
+}
+
+#grupo-arco-Mkt-Share:hover .menu-arco, #grupo-arco-Mkt-Share:hover text, #grupo-arco-Mkt-Share:hover .icon-base,
+#grupo-arco-Mkt-Share.active-group .menu-arco, #grupo-arco-Mkt-Share.active-group text, #grupo-arco-Mkt-Share.active-group .icon-base {
+    transform: translate(6px, 6px) scale(1.01);
+    transform-origin: center center;
+}
+
+/* ------------------------------------ */
+/* ESTILOS DO LEQUE DE INDICADORES (NOVOS) */
+/* ------------------------------------ */
+
+.leque-svg {
+    position: absolute;
+    transform-origin: 0 0; /* Origem de transformação no canto superior esquerdo do viewBox do leque */
+    opacity: 0; /* Começa invisível */
+    pointer-events: none; /* AQUI: O SVG do leque (área vazia) não intercepta cliques */
+    z-index: 10;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Leque visível (ativado por JS) */
+.leque-svg.visible {
+    opacity: 1;
+    /* O transform de posicionamento é definido dinamicamente pelo JS */
+}
+
+/* Estilos para cada 'card' (grupo) dentro do leque */
+.leque-card {
+    cursor: pointer;
+    transition: transform 1s ease;
+    pointer-events: auto; /* AQUI: SÓ OS CARDS DENTRO DO LEQUE SÃO CLICÁVEIS */
+}
+
+/* Cor do card do leque (caminho do arco) */
+.leque-card path { /* Aplica ao caminho do arco do card */
+    fill: #515251; /* Cor padrão para os cards do leque */
+    transition: fill 1s ease, transform 1s ease;
+}
+
+/* Estilos de texto no leque */
+.leque-card text {
+    font-family: 'Montserrat', sans-serif; /* Fonte para todos os textos do leque */
+    fill: white; /* Cor padrão dos textos no leque */
+    font-weight: 400; /* Padrão, pode ser sobrescrito */
+    font-size: 14px; /* Tamanho padrão */
+    pointer-events: none; /* Passa o clique para o card */
+    text-anchor: middle; /* Alinha horizontalmente */
+    dominant-baseline: central; /* Alinha verticalmente no meio */
+    transition: fill 1s ease;
+}
+
+/* Rotação específica para o texto do card de PL */
+#leque-card-pl text {
+    transform: rotate(-68deg); /* Exemplo: Rotaciona 45 graus */
+    transform-origin: center center; /* Gira a partir do centro do texto */
+}
+
+#leque-card-patrimonio-liquido text {
+    transform: rotate(-43deg); /* Exemplo: Rotaciona 45 graus */
+    transform-origin: center center; /* Gira a partir do centro do texto */
+}
+
+#leque-card-Estoque-Peças text {
+    transform: rotate(-99deg); /* Exemplo: Rotaciona 45 graus */
+    transform-origin: center center; /* Gira a partir do centro do texto */
+}
+
+#leque-card-estoque-implementos text {
+    transform: rotate(-124deg); /* Exemplo: Rotaciona 45 graus */
+    transform-origin: center center; /* Gira a partir do centro do texto */
+}
+
+#leque-card-contas-pagar text {
+    transform: rotate(-17deg); /* Exemplo: Rotaciona 45 graus */
+    transform-origin: center center; /* Gira a partir do centro do texto */
+}
+
+#leque-card-contas-receber text {
+    transform: rotate(13deg); /* Exemplo: Rotaciona 45 graus */
+    transform-origin: center center; /* Gira a partir do centro do texto */
+}
+
+#leque-card-fluxo-caixa text {
+    transform: rotate(40deg); /* Exemplo: Rotaciona 45 graus */
+    transform-origin: center center; /* Gira a partir do centro do texto */
+}
+
+
+.leque-card .leque-card-title {
+    font-weight: 700; /* Negrito para o título da categoria */
+    font-size: 16px; /* Um pouco maior para o título */
+}
+
+.leque-card .leque-card-value {
+    font-weight: 500; /* Semibold para o valor */
+    font-size: 14px;
+}
+
+/* Estilos de ícones no leque */
+.leque-card .leque-card-icon {
+    fill: white;
+    transition: fill 0.5s ease;
+}
+
+/* ------------------------------------ */
+/* EFEITOS DE HOVER E ESTADO ATIVO DO LEQUE CARD */
+/* ------------------------------------ */
+
+/* Estilos aplicados no hover e no estado ativo */
+.leque-card:hover,
+.leque-card.active-leque-card { /* NOVA CLASSE AQUI */
+    transform: scale(1.03);
+    transform-origin: center center;
+    filter: drop-shadow(0px 0px 35px black); /* Sombra para hover e ativo */
+}
+
+/* Estilos dos filhos no hover e no estado ativo */
+.leque-card:hover path,
+.leque-card.active-leque-card path { /* NOVA CLASSE AQUI */
+    fill: #515251 ; /* Mantém a cor */
+}
+
+.leque-card:hover .leque-card-title,
+.leque-card:hover .leque-card-value,
+.leque-card:hover .leque-card-icon,
+.leque-card.active-leque-card .leque-card-title, /* NOVA CLASSE AQUI */
+.leque-card.active-leque-card .leque-card-value, /* NOVA CLASSE AQUI */
+.leque-card.active-leque-card .leque-card-icon { /* NOVA CLASSE AQUI */
+    fill: #ffffff;
+}
+
+/* Remover estas regras específicas de rotação de texto se a rotação do G pai for a única desejada */
+/*
+#leque-card-pl text {
+    transform: rotate(-68deg);
+    transform-origin: center center;
+}
+... (e as outras rotações de texto por ID) ...
+*/
+
+
+#leque-card-hc-conectados text {
+    transform: rotate(65deg); /* Exemplo: Rotaciona 45 graus */
+    transform-origin: center center; /* Gira a partir do centro do texto */
+}
+
+#leque-card-maquinas-conectadas text {
+    transform: rotate(15deg); /* Exemplo: Rotaciona 45 graus */
+    transform-origin: center center; /* Gira a partir do centro do texto */
+}
+
+
+
+
+#leque-card-colhedor-cana text {
+    transform: rotate(-90deg); /* Exemplo: Rotaciona 45 graus */
+    transform-origin: center center; /* Gira a partir do centro do texto */
+}
+
+#leque-card-trator text {
+    transform: rotate(-13deg); /* Exemplo: Rotaciona 45 graus */
+    transform-origin: center center; /* Gira a partir do centro do texto */
+}
+
+#leque-card-colheitadeira text {
+    transform: rotate(-50deg); /* Exemplo: Rotaciona 45 graus */
+    transform-origin: center center; /* Gira a partir do centro do texto */
+}
+
+
+
+#leque-card-problema-nao-resolvido text {
+    transform: rotate(90deg); /* Exemplo: Rotaciona 45 graus */
+    transform-origin: center center; /* Gira a partir do centro do texto */
+}
+
+#leque-card-lifetime text {
+    transform: rotate(36deg); /* Exemplo: Rotaciona 45 graus */
+    transform-origin: center center; /* Gira a partir do centro do texto */
+}
+
+#leque-card-nps text {
+    transform: rotate(66deg); /* Exemplo: Rotaciona 45 graus */
+    transform-origin: center center; /* Gira a partir do centro do texto */
+}
